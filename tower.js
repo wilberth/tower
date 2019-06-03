@@ -86,12 +86,24 @@ function padNumber(n, width, z) {
 
 function saveMove(ppn, t, data, verbose=true){
 	// save move to localstorage
-	// get unique key
-	var key = "hanoi&" + padNumber(ppn, 4) + "&" + t
+	var key = "tower&" + padNumber(ppn, 4) + "&" + t
 	var value = JSON.stringify(data)
 	localStorage.setItem(key, value)
+	
+	// show
 	if(verbose)
 		console.log(key +": "+value)
+		
+	// send ajax
+	var xhttp = new XMLHttpRequest()
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			console.log("success: " + xhttp.responseText)
+		}
+	}
+	var uri = encodeURI("/data?a=b");
+	xhttp.open("GET", uri, true)
+	xhttp.send()
 }
 		
 		
