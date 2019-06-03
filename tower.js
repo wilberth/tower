@@ -67,6 +67,12 @@ if (startPositions.length != goalPositions.length)
 if (startPositions.length != maxMoves.length)
 	console.log("ERROR: startPositions length does not match maxMoves length")
 
+maxHeight = [nDisk, nDisk, nDisk]
+if('maxHeight' in qsParm && qsParm['maxHeight']!="")
+	maxHeight = decodeURIComponent(qsParm['maxHeight']).split("").map(Number)
+
+
+
 maxTime = Number.MAX_SAFE_INTEGER
 if('maxTime' in qsParm && qsParm['maxTime']!=""){
 	maxTime = parseInt(decodeURIComponent(qsParm['maxTime']))*1000
@@ -92,8 +98,8 @@ function saveMove(ppn, t, data, verbose=true){
 function setPos(iDisk, iPeg, iPos){
 	// low level
 	//disk[iDisk].style.transform = "translate("+iPeg*dx+"px,0)"
+	// using transform allows for different x values for all disks
 	disk[iDisk].setAttribute('transform', "translate("+iPeg*dx+",0)")
-	//console.log(nDisk, iPos, yPos[nDisk - iPos - 1])
 	disk[iDisk].setAttribute('y', yPos[nDisk - iPos - 1])
 }
 
@@ -107,9 +113,13 @@ function unloggedMove(a, b){
 		
 	var iDiskB = pegDisk[b][pegDisk[b].length-1]
 	if(hanoi && typeof iDiskB != 'undefined' && iDiskB > iDiskA)
-		// b not empty and b disk smaller than a disk
+		// b not empty and b disk smaller than a disk (hanoi constraint)
 		return "ERROR: larger disk on top of smaller one"
 		
+	if(pegDisk[b].length >= maxHeight[b])
+		// disk on full tower (london constraint)
+		return "ERROR: destination peg full"
+
 	// move is valid
 	iMove++
 	setPos(iDiskA, b, pegDisk[b]?pegDisk[b].length:0)
@@ -149,7 +159,7 @@ function move(a, b){
 	var start = startPositions[iGame][0].join("") + "|" + startPositions[iGame][1].join("") + "|" + startPositions[iGame][2].join("")
 	var goal = goalPositions[iGame][0].join("") + "|" + goalPositions[iGame][1].join("") + "|" + goalPositions[iGame][2].join("")
 	var d = {'ppn': ppn, 'iGame': iGame, 'iAttempt': iAttempt, 'iMove': iMove, 'from': a, 'to': b, 
-		'time': t, 'timeExperiment':t-t0, 'timeAttempt':t-tAttempt, 'start': start, 'position' :position, 'goal': goal, 'maxMoves':maxMoves[iGame]}
+		'time': t, 'timeExperiment':t-t0, 'timeAttempt':t-tAttempt, 'start': start, 'current' :position, 'goal': goal, 'maxMoves':maxMoves[iGame]}
 	
 	if(t-t0 > maxTime){
 		document.getElementById('dialogTime').style.display = "block"
@@ -279,11 +289,13 @@ function init(){
 	if(debug) 
 		start()
 		
+	// do not show number of games
 	if(!("nogames" in qsParm)){
 		document.getElementById("nGameSlash").style.display = 'none'
 		document.getElementById("nGame").style.display = 'none'
 	}
 
+	// get distance between pegs (dx) and vertical position of disks (yPos)
 	var peg = []
 	for(var i=0; i<nPeg; i++){ 
 		peg.push(document.getElementById("peg"+i))
@@ -294,6 +306,18 @@ function init(){
 		disk.push(document.getElementById("disk"+i))
 		yPos[nDisk-1-i] = disk[i].y.baseVal.value
 	}
+	
+	// alter peg height
+	for(var i=0; i<nPeg; i++){
+		var y = peg[i].y.baseVal.value
+		var height = peg[i].height.baseVal.value
+		var newHeight = 10 + (height-10) / nDisk * maxHeight[i]
+		peg[i].y.baseVal.newValueSpecifiedUnits(SVGLength.SVG_LENGTHTYPE_PX, y+height-newHeight)
+		peg[i].height.baseVal.newValueSpecifiedUnits(SVGLength.SVG_LENGTHTYPE_PX, newHeight)
+		console.log(newHeight)
+	}
+	
+	
 
 	if(!("arrows" in qsParm) || qsParm['arrows']==0){
 		document.getElementById('arrow01').style.display = "none"
