@@ -30,10 +30,14 @@ for (var i=0; i<parms.length; i++) {
 	}
 }
 
-// set paramaters from query string
+// set parameters from query string
 var debug = false
 if("debug" in qsParm)
 	debug = true
+
+var hanoi = false
+if("hanoi" in qsParm)
+	hanoi = true
 
 var ppn = 0
 if("ppn" in qsParm)
@@ -102,7 +106,7 @@ function unloggedMove(a, b){
 		return "ERROR: no disk on peg "+a
 		
 	var iDiskB = pegDisk[b][pegDisk[b].length-1]
-	if(typeof iDiskB != 'undefined' && iDiskB > iDiskA)
+	if(hanoi && typeof iDiskB != 'undefined' && iDiskB > iDiskA)
 		// b not empty and b disk smaller than a disk
 		return "ERROR: larger disk on top of smaller one"
 		
