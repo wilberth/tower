@@ -1,0 +1,251 @@
+<!DOCTYPE html><html>
+<head>
+<!-- (C) Wilbert van Ham 2017, released under GNU affero public license -->
+<meta charset="UTF-8"> 
+<title>De torens van Hanoi, setup</title> 
+<script>
+window.onload = init
+function init(){ 
+	// for reload
+	setNDisk(document.getElementById('nDiskUsed').value) 
+}
+function setNDisk(n){
+	// set number of disks
+	for(var i=0; i<7; i++) {
+		var elements = document.getElementsByName("disk"+i)
+		for(var j=0; j<elements.length; j++) 
+			elements[j].disabled = i>=n
+	}
+}
+function addToStack(event){
+	// add current game to stack
+	// add period if necessary
+	var s = document.getElementById('games').value
+	if(s.length && s.substr(s.length - 1)!='.'){
+		document.getElementById('games').value += '.'
+		document.getElementById('maxMoves').value += '.'
+	}
+	var nDisk = document.getElementById('nDiskUsed').value
+	// add game
+	for(var i=0; i<nDisk; i++) 
+		document.getElementById('games').value += document.querySelector('input[name=disk'+i+']:checked').value
+	document.getElementById('maxMoves').value += document.getElementById('maxMove').value
+	document.getElementById("start").disabled = false
+}
+function emptyStack(){
+	document.getElementById("games").value = ""
+	document.getElementById("maxMoves").value = ""
+	document.getElementById("start").disabled = true
+}
+function ppnForm(event){
+	// go to separate form for ppn
+	event.preventDefault()
+	var form = document.getElementById('gameForm')
+	form.action = "ppn.html"
+	form.submit()
+	form.action = "hanoi.svg" // reset to default action
+}
+</script>
+</head>
+<body>
+<h1>De torens van Hanoi, setup</h1> 
+<form id=gameForm action="hanoi.svg">
+<table>
+<tr><th>participant</th><td colspan=3><input name=ppn type=number min=0 value=0></td></tr>
+<tr><th>number of disks</th><td colspan=3><input form=dummy id=nDiskUsed name=nDiskUsed value=7 type=number min=1 max=7 onchange='setNDisk(this.value)'></td></tr>
+<tr><th>debug</th><td><input name=debug type=checkbox></td></tr>
+<tr><th>show arrows</th><td><input name=arrows type=checkbox></td></tr>
+<tr><th>show number of games</th><td><input name=nogames type=checkbox></td></tr>
+<tr><th>maximum time (s):</th><td colspan=3><input name=maxTime></td></tr>
+<tr><th></th><th>peg 0</th><th>peg 1</th><th>peg 2</th></tr>
+<tr><th>disk 6:</th><td><input form=dummy name=disk6 type=radio value=0 checked></td><td><input form=dummy name=disk6 type=radio value=1></td><td><input form=dummy name=disk6 type=radio value=2></td>
+<td style="background-color:white" width=20></td><td style="background-color:white" width=20></td><td style="background-color:white" width=20></td><td style="background-color:white" width=20></td><td style="background-color:white" width=20></td><td style="background-color:white" width=20></td><td style="background-color:red" width=20></td><td style="background-color:white" width=20></td><td style="background-color:white" width=20></td><td style="background-color:white" width=20></td><td style="background-color:white" width=20></td><td style="background-color:white" width=20></td><td style="background-color:white" width=20></td></tr>
+<tr><th>disk 5:</th><td><input form=dummy name=disk5 type=radio value=0 checked></td><td><input form=dummy name=disk5 type=radio value=1></td><td><input form=dummy name=disk5 type=radio value=2></td>
+<td style="background-color:white" width=20></td><td style="background-color:white" width=20></td><td style="background-color:white" width=20></td><td style="background-color:white" width=20></td><td style="background-color:white" width=20></td><td style="background-color:red" width=20></td><td style="background-color:red" width=20></td><td style="background-color:red" width=20></td><td style="background-color:white" width=20></td><td style="background-color:white" width=20></td><td style="background-color:white" width=20></td><td style="background-color:white" width=20></td><td style="background-color:white" width=20></td></tr>
+<tr><th>disk 4:</th><td><input form=dummy name=disk4 type=radio value=0 checked></td><td><input form=dummy name=disk4 type=radio value=1></td><td><input form=dummy name=disk4 type=radio value=2></td>
+<td style="background-color:white" width=20></td><td style="background-color:white" width=20></td><td style="background-color:white" width=20></td><td style="background-color:white" width=20></td><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:white" width=20></td><td style="background-color:white" width=20></td><td style="background-color:white" width=20></td><td style="background-color:white" width=20></td></tr>
+<tr><th>disk 3:</th><td><input form=dummy name=disk3 type=radio value=0 checked></td><td><input form=dummy name=disk3 type=radio value=1></td><td><input form=dummy name=disk3 type=radio value=2></td>
+<td style="background-color:white" width=20></td><td style="background-color:white" width=20></td><td style="background-color:white" width=20></td><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:white" width=20></td><td style="background-color:white" width=20></td><td style="background-color:white" width=20></td></tr>
+<tr><th>disk 2:</th><td><input form=dummy name=disk2 type=radio value=0 checked></td><td><input form=dummy name=disk2 type=radio value=1></td><td><input form=dummy name=disk2 type=radio value=2></td>
+<td style="background-color:white" width=20></td><td style="background-color:white" width=20></td><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:white" width=20></td><td style="background-color:white" width=20></td></tr>
+<tr><th>disk 1:</th><td><input form=dummy name=disk1 type=radio value=0 checked></td><td><input form=dummy name=disk1 type=radio value=1></td><td><input form=dummy name=disk1 type=radio value=2></td>
+<td style="background-color:white" width=20></td><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:white" width=20></td></tr>
+<tr><th>disk 0:</th><td><input form=dummy name=disk0 type=radio value=0 checked></td><td><input form=dummy name=disk0 type=radio value=1></td><td><input form=dummy name=disk0 type=radio value=2></td>
+<td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20></tr>
+<tr><th>maximum moves:</th><td colspan=3><input form=dummy id=maxMove></td></tr>
+<tr><th>game stack:</th><td colspan=3><input id=games name=games ></td></tr>
+<tr><th>max moves stack:</th><td colspan=3><input id=maxMoves name=maxMoves ></td></tr>
+<tr><th>change stack:</th><td colspan=3><input type=button value="add game to stack" onclick='addToStack(event)'><input type=button value="empty stack" onclick='emptyStack()'></td></tr>
+<tr><th>go</th><td colspan=3><input id="start" type=submit value="start games"></td><td colspan=13><input id="ppn" type=button onclick="ppnForm(event)" value="ppn form"></td></tr>
+</table>
+</form>
+
+<h1>Local data access</h1>
+<p>Retrieve data of an experiment that was performed on this computer</p>
+<form onsubmit='getValues(event)'>
+<input type=submit value='show'>
+<input type=button onclick='getCsv()' value='csv download'>
+<table>
+	<tr><th>total trials:</th><td><input id=total readonly></td></tr>
+	<tr><th>participant:</th><td>
+		<input id=participantMin name=participantMin type=number>
+		<input id=participantMax name=participantMax type=number>
+		</td></tr>
+	<tr><th>timestamp:</th><td>
+		<input id=timestampMin name=timestampMin type=number value=''>
+		<input id=timestampMax name=timestampMax type=number value=''>
+		</td></tr>
+</table></form>
+<table id=results>
+<tr align=left >
+<th>participant</th><th>timestamp</th><th>iGame</th><th>iAttempt</th><th>iMove</th><th>from</th><th>to</th><th>timeExperiment</th><th>timeAttempt</th><th>game</th><th>message</th>
+</tr>
+</table>
+</form>
+<script>
+function loadLimits(){
+	var participant=[Infinity,0], timestamp=[Infinity,0]
+	var n = 0
+	for (var i=0; i<localStorage.length; i++)
+		if(localStorage.key(i).slice(0,5) == "hanoi"){
+			var a = localStorage.key(i).split("&")
+			participant[0] = Math.min(participant[0], a[1])
+			participant[1] = Math.max(participant[1], a[1])
+			timestamp[0] = Math.min(timestamp[0], a[2])
+			timestamp[1] = Math.max(timestamp[1], a[2])
+			n++
+		}
+	return [participant, timestamp, n]
+}
+
+var limits = loadLimits()
+// minimum and maximum values of following two vars
+var names = ["participant", "timestamp"]
+for(var i=0; i<2; i++){
+	e = document.getElementById(names[i]+"Min")
+	e.value = limits[i][0]
+	e.min = limits[i][0] 
+	e.max = limits[i][1] 
+	e = document.getElementById(names[i]+"Max")
+	e.value = limits[i][1] 
+	e.min = limits[i][0] 
+	e.max = limits[i][1] 
+}
+document.getElementById("total").value = limits[2]
+// data column heads
+heads = ["iGame","iAttempt","iMove","from","to","timeExperiment","timeAttempt","game","message"]
+function dataLoad(participant, timestamp){
+	// get data for certain range of participant and timestamp
+	var values = []
+	var keys = []
+
+	// sort keys chronologically
+	for (var i=0; i<localStorage.length; i++)
+		if(localStorage.key(i).slice(0,5) == "hanoi")
+			keys.push(localStorage.key(i))
+	keys.sort()
+	for (var i=0; i<keys.length; i++){
+		var a = keys[i].split("&").slice(1) // ignore "hanoi"
+		if(participant[0] <= Number(a[0]) && Number(a[0]) <= participant[1] &&
+			timestamp[0] <= Number(a[1]) && Number(a[1]) <= timestamp[1]){
+				try{
+					var value = [a[0], a[1]] // deep copy
+					//console.log(localStorage.getItem(keys[i]))
+					d = JSON.parse(localStorage.getItem(keys[i]))
+					for(var j=0; j<heads.length; j++)
+						value.push(d[heads[j]])
+					values.push(value)
+				} catch(e) { console.log("ERROR: " + e) }
+		}
+	}
+	return values
+}
+
+
+function getValues(event){
+	// get data and put it in the dom
+	event.preventDefault()
+	
+	var participant = [document.getElementById("participantMin").value,
+		document.getElementById("participantMax").value]
+	var timestamp = [document.getElementById("timestampMin").value,
+		document.getElementById("timestampMax").value]
+	var values = dataLoad(participant, timestamp)
+	
+	document.getElementById("total").value = values.length
+
+	var table = document.getElementById("results")
+	
+	// remove old rows
+	var rows = table.getElementsByTagName("tr")
+	for(var i=rows.length-1; i>0; i--)
+		rows[i].parentNode.removeChild(rows[i])
+	
+	// populate table
+	for(var i=0; i<values.length; i++){
+		var tr = document.createElement("tr");
+		for(var j=0; j<values[i].length; j++){
+			var td = document.createElement("td");
+			td.textContent += unescape(values[i][j])
+			tr.appendChild(td)
+		}
+		table.appendChild(tr)
+	}
+	
+}
+function base64(input){
+	// http://www.webtoolkit.info/
+	// helper for getCsv
+	var i=0;
+	var output = "";
+	var _keyStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+	while (i < input.length) {
+ 
+		chr1 = input.charCodeAt(i++);
+		chr2 = input.charCodeAt(i++);
+		chr3 = input.charCodeAt(i++);
+
+		enc1 = chr1 >> 2;
+		enc2 = ((chr1 & 3) << 4) | (chr2 >> 4);
+		enc3 = ((chr2 & 15) << 2) | (chr3 >> 6);
+		enc4 = chr3 & 63;
+ 
+		if (isNaN(chr2)) {
+			enc3 = enc4 = 64;
+		} else if (isNaN(chr3)) {
+			enc4 = 64;
+		}
+ 
+		output = output +
+		_keyStr.charAt(enc1) + _keyStr.charAt(enc2) +
+		_keyStr.charAt(enc3) + _keyStr.charAt(enc4);
+
+	}
+	return output;
+}
+
+function getCsv(){
+	// get data and put it in a data url representing a csv file
+	var csv = "ppn,timestamp,"+heads.join(",")+"\n"
+	var participant = [document.getElementById("participantMin").value,
+		document.getElementById("participantMax").value]
+	var timestamp = [document.getElementById("timestampMin").value,
+		document.getElementById("timestampMax").value]
+	var values = dataLoad(participant, timestamp)
+
+	for(var i=0; i<values.length; i++){
+		for(var j=0; j<values[i].length; j++){
+			if (j!=0)
+				csv += ","
+			csv += '"' + unescape(values[i][j]) + '"'
+		}
+		csv += "\n"
+	}
+
+	window.location = "data:text/csv;base64,"+base64(csv)
+}
+</script>
+
+
+</body>
+</html>
