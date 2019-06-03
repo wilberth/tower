@@ -1,4 +1,4 @@
-// (C) Wilbert van Ham 2017-2018, released under GNU affero public license
+// (C) Wilbert van Ham 2017-2019, released under GNU affero public license
 /* dialog: dialogWelcome (visible), dialogCongratulate, dialogContinue, dialogTime, dialogMoves
  * dialogTime, show on timesout for all games instead of dialogCongratulate
  * dialogContinue, show after a single games when there are more games to come
@@ -11,7 +11,7 @@ var nPeg = 3
 var nDiskUsed
 var pegDisk = [[],[],[]] // list of stacks 
 var xPos = [], disk = [], yPos = [], dx
-var iGame = 0 // counter in diskPos
+var iGame = 0 // counter in startPositions, goalPositions and maxMoves
 var iAttempt = 0 // attempt at the game, increments on reaching maxMoves
 var iMove = 0 // move number within attempt
 var scale = 1
@@ -39,24 +39,29 @@ var ppn = 0
 if("ppn" in qsParm)
 	ppn = Number(qsParm["ppn"])
 	
-// initial disk position for each of 7 disks
-diskPos = [[0,0,0,0,0,0,0]]
+// initialialize initial and final disk position for up to 7 disks
+startPositions = [ [[0,1,2,3,4,5,6],[],[]] ]
+goalPositions = [ [[0,1,2,3,4,5,6],[],[]] ]
+maxMoves = [Number.MAX_SAFE_INTEGER]
 if('games' in qsParm && qsParm['games']!=""){
-	diskPos = []
-	decodeURIComponent(qsParm['games']).split('.').forEach( function(element) {
-		diskPos.push(element.split(''))
-	} )
-}
-
-maxMoves = []
-for(key of diskPos)
-	maxMoves.push(Number.MAX_SAFE_INTEGER)
-if('maxMoves' in qsParm && qsParm['maxMoves']!=""){
+	// games of fform: 01||.||01.3,012||.||012.7
+	startPositions = []
+	goalPositions = []
 	maxMoves = []
-	decodeURIComponent(qsParm['maxMoves']).split('.').forEach( function(element) {
-		maxMoves.push(parseInt(element))
+	var games = decodeURIComponent(qsParm['games']).split(',')
+	games.forEach( function(s) {
+		var game = s.split('.')
+		var towers = game[0].split("|")
+		startPositions.push([towers[0].split("").map(Number), towers[1].split("").map(Number), towers[2].split("").map(Number)])
+		var towers = game[1].split("|")
+		goalPositions.push([towers[0].split("").map(Number), towers[1].split("").map(Number), towers[2].split("").map(Number)])
+		maxMoves.push(parseInt(game[2]))
 	} )
 }
+if (startPositions.length != goalPositions.length)
+	console.log("ERROR: startPositions length does not match goalPositions length")
+if (startPositions.length != maxMoves.length)
+	console.log("ERROR: startPositions length does not match maxMoves length")
 
 maxTime = Number.MAX_SAFE_INTEGER
 if('maxTime' in qsParm && qsParm['maxTime']!=""){
@@ -113,7 +118,7 @@ function unloggedMove(a, b){
 	// check if game has ended
 	if(pegDisk[0].length==0 && pegDisk[1].length==0){
 		iGame++
-		if(iGame==diskPos.length){
+		if(iGame==startPositions.length){
 			document.getElementById('dialogCongratulate').style.display = "block"
 			return "INFO: valid, last of experiment"
 		} else {
@@ -136,8 +141,11 @@ function unloggedMove(a, b){
 
 function move(a, b){
 	var t = new Date().getTime()
+	var position = pegDisk[0].join("") + "|" + pegDisk[1].join("") + "|" + pegDisk[2].join("")
+	var start = startPositions[iGame][0].join("") + "|" + startPositions[iGame][1].join("") + "|" + startPositions[iGame][2].join("")
+	var goal = goalPositions[iGame][0].join("") + "|" + goalPositions[iGame][1].join("") + "|" + goalPositions[iGame][2].join("")
 	var d = {'ppn': ppn, 'iGame': iGame, 'iAttempt': iAttempt, 'iMove': iMove, 'from': a, 'to': b, 
-		'time': t, 'timeExperiment':t-t0, 'timeAttempt':t-tAttempt, 'game':diskPos[iGame].join("")}
+		'time': t, 'timeExperiment':t-t0, 'timeAttempt':t-tAttempt, 'start': start, 'position' :position, 'goal': goal, 'maxMoves':maxMoves[iGame]}
 	
 	if(t-t0 > maxTime){
 		document.getElementById('dialogTime').style.display = "block"
@@ -245,15 +253,13 @@ function initGame(){
 	document.getElementById("iGame").textContent = iGame + 1
 	tAttempt = new Date().getTime()
 	// initialize disks
-	nDiskUsed = diskPos[iGame].length
-	pegDisk = [[],[],[]]
-	for(var i=0; i<nDisk; i++){
-		if(i<nDiskUsed){
+	pegDisk = JSON.parse(JSON.stringify(startPositions[iGame])) // deep please
+	for(var i=0; i<nDisk; i++)
+		disk[i].style.display = "none"
+	for(var iPeg=0; iPeg<nPeg; iPeg++){
+		for(var i=0; i<pegDisk[iPeg].length; i++){
 			disk[i].style.display = "block"
-			setPos(i, diskPos[iGame][i], pegDisk[diskPos[iGame][i]].length)
-			pegDisk[diskPos[iGame][i]].push(i)
-		} else {
-			disk[i].style.display = "none"
+			setPos(pegDisk[iGame][i], iPeg, i)
 		}
 	}
 	initDiskInteractivity()
@@ -262,7 +268,7 @@ function initGame(){
 function init(){
 	resize()
 	window.addEventListener("resize", resize)
-	document.getElementById("nGame").textContent = diskPos.length
+	document.getElementById("nGame").textContent = startPositions.length
 	
 	// welcome dialog
 	document.getElementById('okWelcome').addEventListener("click", start)
@@ -270,7 +276,6 @@ function init(){
 		start()
 		
 	if(!("nogames" in qsParm)){
-		console.log("show nogames")
 		document.getElementById("nGameSlash").style.display = 'none'
 		document.getElementById("nGame").style.display = 'none'
 	}

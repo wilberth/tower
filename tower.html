@@ -1,8 +1,8 @@
 <!DOCTYPE html><html>
 <head>
-<!-- (C) Wilbert van Ham 2017, released under GNU affero public license -->
+<!-- (C) Wilbert van Ham 2017-2019, released under GNU affero public license -->
 <meta charset="UTF-8"> 
-<title>De torens van Hanoi, setup</title> 
+<title>Towers of Hanoi/ tower of Londen, setup</title> 
 <script>
 window.onload = init
 function init(){ 
@@ -11,72 +11,63 @@ function init(){
 }
 function setNDisk(n){
 	// set number of disks
-	for(var i=0; i<7; i++) {
-		var elements = document.getElementsByName("disk"+i)
-		for(var j=0; j<elements.length; j++) 
-			elements[j].disabled = i>=n
+	document.getElementById('startPosition').value = ""
+	document.getElementById('endPosition').value = "||"
+	document.getElementById('maxMove').value = 2**n-1
+	for(var i=0; i<n; i++) {
+		document.getElementById('startPosition').value += i
+		document.getElementById('endPosition').value += i
 	}
+	document.getElementById('startPosition').value += "||"
 }
 function addToStack(event){
 	// add current game to stack
 	// add period if necessary
-	var s = document.getElementById('games').value
-	if(s.length && s.substr(s.length - 1)!='.'){
-		document.getElementById('games').value += '.'
-		document.getElementById('maxMoves').value += '.'
-	}
-	var nDisk = document.getElementById('nDiskUsed').value
-	// add game
-	for(var i=0; i<nDisk; i++) 
-		document.getElementById('games').value += document.querySelector('input[name=disk'+i+']:checked').value
-	document.getElementById('maxMoves').value += document.getElementById('maxMove').value
+	var s = ""
+	if (document.getElementById('games').value)
+		s =","
+	s += document.getElementById('startPosition').value
+	s += "."
+	s += document.getElementById('endPosition').value
+	s += "."
+	s += document.getElementById('maxMove').value
+	document.getElementById('games').value += s
 	document.getElementById("start").disabled = false
 }
 function emptyStack(){
 	document.getElementById("games").value = ""
-	document.getElementById("maxMoves").value = ""
 	document.getElementById("start").disabled = true
 }
-function ppnForm(event){
+function changeAction(event){
 	// go to separate form for ppn
-	event.preventDefault()
 	var form = document.getElementById('gameForm')
-	form.action = "ppn.html"
-	form.submit()
-	form.action = "hanoi.svg" // reset to default action
+	form.action = event.target.options[event.target.options.selectedIndex].value;
 }
 </script>
 </head>
 <body>
-<h1>De torens van Hanoi, setup</h1> 
+<h1>Towers of Hanoi/ tower of Londen, setup</h1> 
 <form id=gameForm action="hanoi.svg">
 <table>
-<tr><th>participant</th><td colspan=3><input name=ppn type=number min=0 value=0></td></tr>
-<tr><th>number of disks</th><td colspan=3><input form=dummy id=nDiskUsed name=nDiskUsed value=7 type=number min=1 max=7 onchange='setNDisk(this.value)'></td></tr>
+<tr><th>participant</th><td><input name=ppn type=number min=0 value=0></td></tr>
+<tr><th>template</th><td><select onchange="changeAction(event)" >
+  <option value="hanoi.svg" selected>disks</option>
+  <option value="london.svg">spheres</option>
+</select></td></tr>
 <tr><th>debug</th><td><input name=debug type=checkbox></td></tr>
 <tr><th>show arrows</th><td><input name=arrows type=checkbox></td></tr>
 <tr><th>show number of games</th><td><input name=nogames type=checkbox></td></tr>
-<tr><th>maximum time (s):</th><td colspan=3><input name=maxTime></td></tr>
-<tr><th></th><th>peg 0</th><th>peg 1</th><th>peg 2</th></tr>
-<tr><th>disk 6:</th><td><input form=dummy name=disk6 type=radio value=0 checked></td><td><input form=dummy name=disk6 type=radio value=1></td><td><input form=dummy name=disk6 type=radio value=2></td>
-<td style="background-color:white" width=20></td><td style="background-color:white" width=20></td><td style="background-color:white" width=20></td><td style="background-color:white" width=20></td><td style="background-color:white" width=20></td><td style="background-color:white" width=20></td><td style="background-color:red" width=20></td><td style="background-color:white" width=20></td><td style="background-color:white" width=20></td><td style="background-color:white" width=20></td><td style="background-color:white" width=20></td><td style="background-color:white" width=20></td><td style="background-color:white" width=20></td></tr>
-<tr><th>disk 5:</th><td><input form=dummy name=disk5 type=radio value=0 checked></td><td><input form=dummy name=disk5 type=radio value=1></td><td><input form=dummy name=disk5 type=radio value=2></td>
-<td style="background-color:white" width=20></td><td style="background-color:white" width=20></td><td style="background-color:white" width=20></td><td style="background-color:white" width=20></td><td style="background-color:white" width=20></td><td style="background-color:red" width=20></td><td style="background-color:red" width=20></td><td style="background-color:red" width=20></td><td style="background-color:white" width=20></td><td style="background-color:white" width=20></td><td style="background-color:white" width=20></td><td style="background-color:white" width=20></td><td style="background-color:white" width=20></td></tr>
-<tr><th>disk 4:</th><td><input form=dummy name=disk4 type=radio value=0 checked></td><td><input form=dummy name=disk4 type=radio value=1></td><td><input form=dummy name=disk4 type=radio value=2></td>
-<td style="background-color:white" width=20></td><td style="background-color:white" width=20></td><td style="background-color:white" width=20></td><td style="background-color:white" width=20></td><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:white" width=20></td><td style="background-color:white" width=20></td><td style="background-color:white" width=20></td><td style="background-color:white" width=20></td></tr>
-<tr><th>disk 3:</th><td><input form=dummy name=disk3 type=radio value=0 checked></td><td><input form=dummy name=disk3 type=radio value=1></td><td><input form=dummy name=disk3 type=radio value=2></td>
-<td style="background-color:white" width=20></td><td style="background-color:white" width=20></td><td style="background-color:white" width=20></td><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:white" width=20></td><td style="background-color:white" width=20></td><td style="background-color:white" width=20></td></tr>
-<tr><th>disk 2:</th><td><input form=dummy name=disk2 type=radio value=0 checked></td><td><input form=dummy name=disk2 type=radio value=1></td><td><input form=dummy name=disk2 type=radio value=2></td>
-<td style="background-color:white" width=20></td><td style="background-color:white" width=20></td><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:white" width=20></td><td style="background-color:white" width=20></td></tr>
-<tr><th>disk 1:</th><td><input form=dummy name=disk1 type=radio value=0 checked></td><td><input form=dummy name=disk1 type=radio value=1></td><td><input form=dummy name=disk1 type=radio value=2></td>
-<td style="background-color:white" width=20></td><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:white" width=20></td></tr>
-<tr><th>disk 0:</th><td><input form=dummy name=disk0 type=radio value=0 checked></td><td><input form=dummy name=disk0 type=radio value=1></td><td><input form=dummy name=disk0 type=radio value=2></td>
-<td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20><td style="background-color:red" width=20></tr>
-<tr><th>maximum moves:</th><td colspan=3><input form=dummy id=maxMove></td></tr>
-<tr><th>game stack:</th><td colspan=3><input id=games name=games ></td></tr>
-<tr><th>max moves stack:</th><td colspan=3><input id=maxMoves name=maxMoves ></td></tr>
-<tr><th>change stack:</th><td colspan=3><input type=button value="add game to stack" onclick='addToStack(event)'><input type=button value="empty stack" onclick='emptyStack()'></td></tr>
-<tr><th>go</th><td colspan=3><input id="start" type=submit value="start games"></td><td colspan=13><input id="ppn" type=button onclick="ppnForm(event)" value="ppn form"></td></tr>
+<tr><th>hanoi constraint:</th><td><input name=hanoi type=checkbox checked></td></tr>
+<tr><th>maximum tower height:</th><td><input name=maxHeight placeholder=777></td></tr>
+<tr><th>maximum time (s):</th><td><input name=maxTime></td></tr>
+<tr><th>Setup Game:</h></tr>
+<tr><th></th><th>number of disks (standard Hanoi)</th><td><input form=dummy id=nDiskUsed name=nDiskUsed value=7 type=number min=1 max=7 onchange='setNDisk(this.value)'></td></tr>
+<tr><th></th><th>start position:</th><td><input form=dummy id=startPosition placeholder="012||"></td></tr>
+<tr><th></th><th>end position:</th><td><input form=dummy id=endPosition placeholder="||012"></td></tr>
+<tr><th></th><th>maximum moves:</th><td><input form=dummy id=maxMove></td></tr>
+<tr><th></th><th>alter stack:</th><td><input type=button value="add game to stack" onclick='addToStack(event)'><input type=button value="empty stack" onclick='emptyStack()'></td></tr>
+<tr><th>game stack:</th><td><input id=games name=games></td></tr>
+<tr><th>go</th><td><input id="start" type=submit value="start games" disabled></td><!--<td colspan=13><input id="ppn" type=button onclick="ppnForm(event)" value="ppn form"></td>--></tr>
 </table>
 </form>
 
