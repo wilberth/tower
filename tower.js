@@ -101,9 +101,9 @@ function saveMove(ppn, t, data, verbose=true){
 			console.log("success: " + xhttp.responseText)
 		}
 	}
-	var uri = encodeURI("/data?a=b");
-	xhttp.open("GET", uri, true)
-	xhttp.send()
+	xhttp.open("POST", "/data", true)
+	xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	xhttp.send("data="+encodeURIComponent(JSON.stringify(data)))
 }
 		
 		

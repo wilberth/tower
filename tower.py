@@ -1,11 +1,11 @@
 #!/usr/bin/env python2
-# start with:
-# FLASK_APP=tower.py flask run # (posix)
-# 
-
+# first part of this file describes the flask server that receives and saves the data
+# the part in "main" starts the server and start the client
 from flask import Flask, send_file, request
+import json
+import sys
 
-app = Flask(__name__)
+app = Flask(__name__.split('.')[0])
 
 @app.route("/")
 def hello():
@@ -32,17 +32,24 @@ def hanoi():
 	except Exception as e:
 		return str(e)
 
-@app.route("/data")
+@app.route("/data", methods = ['POST', 'GET']) # GET is just for testing, experiment uses POST
 def data():
-	return "data received"
-	with open("/tmp/tt.dat", "a") as file:
-		json = request.get_json(force=True)
-		file.write(json)
-		return "data received: " + json
+	if request.method == 'POST':
+		data = request.form # flat: only first of multiple
+	elif request.method == 'GET':
+		data = request.args 
+	else:
+		data = {"data": "ERROR: neither post nor get in flask"}
+	d = data['data']
+	with open("data.dat", "a") as file:
+		file.write(d + ",\n")
+		return "data received: " + d 
 
 if __name__ == "__main__":
+	import sys
 	import subprocess
 	import os
+	import urllib
 	print("Starting Tower server")
 	myEnv = os.environ.copy()
 	myEnv["FLASK_APP"] = "tower.py"
@@ -50,20 +57,23 @@ if __name__ == "__main__":
 	server = subprocess.Popen(['flask', 'run'],
 		env=myEnv,
 		cwd=os.path.dirname(os.path.abspath(__file__)),
-		stdout=subprocess.PIPE,
-		stderr=subprocess.PIPE)
+		#stdout=open("info.log", "a"),
+		stderr=open("error.log", "a")
+		)
 
-	print("Starting Tower client")
-	try:
-		client = subprocess.Popen(['chromium-browser', '--kiosk', '--no-default-browser-check', '--disable-translate', '--disable-features=TranslateUI',
-			'http://localhost:5000/hanoi.svg?ppn=0&hanoi=on&maxHeight=&maxTime=&games=0123456%7C%7C.%7C%7C0123456.127'],
-			stdout=subprocess.PIPE,
-			stderr=subprocess.PIPE)
-	except:
-		os.system('taskkill /im chrome.exe')
-		client = subprocess.call(['C:/Program Files (x86)/Google/Chrome/Application/chrome.exe', 
-			'--kiosk', '--no-default-browser-check', '--disable-translate', '--disable-features=TranslateUI',
-			'http://localhost:5000/hanoi.svg?ppn=0&hanoi=on&maxHeight=&maxTime=&games=0123456%7C%7C.%7C%7C0123456.127'],
-			stdout=subprocess.PIPE,
-			stderr=subprocess.PIPE)
-	client.wait()
+	if(len(sys.argv)<2 or sys.argv[1]!="--server"):
+		print("Starting Tower client")
+		args = {'ppn': 0, 'hanoi': 'on', 'games':'0123456||.||0123456.127'}
+		url = "http://localhost:5000/hanoi.svg?" + urllib.urlencode(args)
+		try:
+			client = subprocess.Popen(['chromium-browser', '--kiosk', '--no-default-browser-check', '--disable-translate', 
+				'--disable-features=TranslateUI', url],
+				stdout=subprocess.PIPE,
+				stderr=subprocess.PIPE)
+		except:
+			#os.system('taskkill /im chrome.exe')
+			client = subprocess.call(['C:/Program Files (x86)/Google/Chrome/Application/chrome.exe', '--kiosk', '--no-default-browser-check', 
+				'--disable-translate', '--disable-features=TranslateUI', url],
+				stdout=subprocess.PIPE,
+				stderr=subprocess.PIPE)
+		client.wait()
