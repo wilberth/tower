@@ -32,6 +32,13 @@ def hanoi():
 	except Exception as e:
 		return str(e)
 
+@app.route("/london.svg")
+def hanoi():
+	try:
+		return send_file('hanoi.svg')
+	except Exception as e:
+		return str(e)
+
 @app.route("/data", methods = ['POST', 'GET']) # GET is just for testing, experiment uses POST
 def data():
 	if request.method == 'POST':
