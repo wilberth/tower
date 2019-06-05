@@ -142,7 +142,8 @@ function unloggedMove(a, b){
 	initDiskInteractivity()
 	
 	// check if game has ended
-	if(pegDisk[0].length==0 && pegDisk[1].length==0){
+	//if(pegDisk[0].length==0 && pegDisk[1].length==0){ 
+	if(JSON.stringify(pegDisk) == JSON.stringify(goalPositions[iGame])){
 		iGame++
 		if(iGame==startPositions.length){
 			document.getElementById('dialogCongratulate').style.display = "block"
