@@ -96,11 +96,10 @@ function saveMove(ppn, t, data, verbose=true){
 		
 	// send ajax
 	var xhttp = new XMLHttpRequest()
-	xhttp.onreadystatechange = function() {
-		if (this.readyState == 4 && this.status == 200) {
+	/*xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200)
 			console.log("success: " + xhttp.responseText)
-		}
-	}
+	}*/
 	xhttp.open("POST", "/data", true)
 	xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 	xhttp.send("data="+encodeURIComponent(JSON.stringify(data)))
@@ -112,7 +111,8 @@ function setPos(iDisk, iPeg, iPos){
 	//disk[iDisk].style.transform = "translate("+iPeg*dx+"px,0)"
 	// using transform allows for different x values for all disks
 	disk[iDisk].setAttribute('transform', "translate("+iPeg*dx+",0)")
-	disk[iDisk].setAttribute('y', yPos[nDisk - iPos - 1])
+	disk[iDisk].setAttribute('y', yPos[iPos])
+	disk[iDisk].setAttribute('cy', yPos[iPos])
 }
 
 function unloggedMove(a, b){
@@ -314,9 +314,22 @@ function init(){
 		xPos[i] = peg[i].x.baseVal.value
 	}
 	dx = xPos[1] - xPos[0]
+	
+	// get y-position of disks
 	for(var i=0; i<nDisk; i++){
-		disk.push(document.getElementById("disk"+i))
-		yPos[nDisk-1-i] = disk[i].y.baseVal.value
+		try {
+			var d = document.getElementById("disk"+i)
+			disk.push(d)
+			try{
+				yPos[i] = disk[i].y.baseVal.value // rectangle
+			} catch(error) {
+				yPos[i] = disk[i].cy.baseVal.value // circle or ellipse
+			}
+		} catch(error) {
+			console.log("number of disks in template: "+i)
+			nDisk = i
+			break
+		}
 	}
 	
 	// alter peg height
@@ -326,7 +339,7 @@ function init(){
 		var newHeight = 10 + (height-10) / nDisk * maxHeight[i]
 		peg[i].y.baseVal.newValueSpecifiedUnits(SVGLength.SVG_LENGTHTYPE_PX, y+height-newHeight)
 		peg[i].height.baseVal.newValueSpecifiedUnits(SVGLength.SVG_LENGTHTYPE_PX, newHeight)
-		console.log(newHeight)
+		console.log("new pegHeight:" + newHeight)
 	}
 	
 	

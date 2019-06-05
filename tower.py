@@ -33,9 +33,9 @@ def hanoi():
 		return str(e)
 
 @app.route("/london.svg")
-def hanoi():
+def london():
 	try:
-		return send_file('hanoi.svg')
+		return send_file('london.svg')
 	except Exception as e:
 		return str(e)
 
