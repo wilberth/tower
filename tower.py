@@ -37,7 +37,7 @@ def london():
 	try:
 		return send_file('london.svg')
 	except Exception as e:
-		return str(e)
+		return "a"+str(e)
 
 @app.route("/data", methods = ['POST', 'GET']) # GET is just for testing, experiment uses POST
 def data():
@@ -71,16 +71,16 @@ if __name__ == "__main__":
 	if(len(sys.argv)<2 or sys.argv[1]!="--server"):
 		print("Starting Tower client")
 		args = {'ppn': 0, 'hanoi': 'on', 'games':'0123456||.||0123456.127'}
-		url = "http://localhost:5000/hanoi.svg?" + urllib.urlencode(args)
+		url = "http://localhost:5000/london.svg?" + urllib.urlencode(args)
 		try:
 			client = subprocess.Popen(['chromium-browser', '--kiosk', '--no-default-browser-check', '--disable-translate', 
 				'--disable-features=TranslateUI', url],
 				stdout=subprocess.PIPE,
 				stderr=subprocess.PIPE)
 		except:
-			#os.system('taskkill /im chrome.exe')
-			client = subprocess.call(['C:/Program Files (x86)/Google/Chrome/Application/chrome.exe', '--kiosk', '--no-default-browser-check', 
+			os.system('taskkill /imf flask.exe')
+			#client = subprocess.call(['C:/Program Files (x86)/Google/Chrome/Application/chrome.exe', '--kiosk', '--no-default-browser-check', 
+			client = subprocess.call(['C:/Program Files (x86)/Google/Chrome/Application/chrome.exe', '--no-default-browser-check', 
 				'--disable-translate', '--disable-features=TranslateUI', url],
 				stdout=subprocess.PIPE,
 				stderr=subprocess.PIPE)
-		client.wait()

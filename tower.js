@@ -8,7 +8,6 @@
 var nDisk = 7
 var nPeg = 3
 // globals
-var nDiskUsed
 var pegDisk = [[],[],[]] // list of stacks 
 var xPos = [], disk = [], yPos = [], dx
 var iGame = 0 // counter in startPositions, goalPositions and maxMoves
@@ -110,6 +109,7 @@ function setPos(iDisk, iPeg, iPos){
 	// low level
 	//disk[iDisk].style.transform = "translate("+iPeg*dx+"px,0)"
 	// using transform allows for different x values for all disks
+	//console.log("setPos: "+iDisk+", "+iPeg+", "+iPos)
 	disk[iDisk].setAttribute('transform', "translate("+iPeg*dx+",0)")
 	disk[iDisk].setAttribute('y', yPos[iPos])
 	disk[iDisk].setAttribute('cy', yPos[iPos])
@@ -281,12 +281,22 @@ function initGame(){
 	tAttempt = new Date().getTime()
 	// initialize disks
 	pegDisk = JSON.parse(JSON.stringify(startPositions[iGame])) // deep please
+	// disable all disks
 	for(var i=0; i<nDisk; i++)
-		disk[i].style.display = "none"
+		disk[i].style.display = "none" 
+	// enable disks that are present in this game and do not exceed the tower height
 	for(var iPeg=0; iPeg<nPeg; iPeg++){
-		for(var i=0; i<pegDisk[iPeg].length; i++){
-			disk[i].style.display = "block"
-			setPos(pegDisk[iGame][i], iPeg, i)
+		if(pegDisk[iPeg].length > maxHeight[iPeg])
+			pegDisk[iPeg].pop()
+		for(var iPos=0; iPos<pegDisk[iPeg].length && iPos<maxHeight[iPeg]; iPos++){
+			var iDisk = pegDisk[iPeg][iPos]
+			if(iDisk>=nDisk){
+				console.error("disk " + iDisk + "not present in template")
+				pegDisk[iPeg].pop()
+				continue
+			}
+			disk[iDisk].style.display = "block"
+			setPos(iDisk, iPeg, iPos)
 		}
 	}
 	initDiskInteractivity()
