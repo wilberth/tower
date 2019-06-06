@@ -70,7 +70,7 @@ if __name__ == "__main__":
 
 	if(len(sys.argv)<2 or sys.argv[1]!="--server"):
 		print("Starting Tower client")
-		args = {'ppn': 0, 'hanoi': 'on', 'games':'0123456||.||0123456.127'}
+		args = {'ppn': 0, 'hanoi': 'on', 'games':'012||.0|1|2.7', 'maxHeight': '321'}
 		url = "http://localhost:5000/london.svg?" + urllib.urlencode(args)
 		try:
 			client = subprocess.Popen(['chromium-browser', '--kiosk', '--no-default-browser-check', '--disable-translate', 
@@ -78,9 +78,8 @@ if __name__ == "__main__":
 				stdout=subprocess.PIPE,
 				stderr=subprocess.PIPE)
 		except:
-			os.system('taskkill /imf flask.exe')
-			#client = subprocess.call(['C:/Program Files (x86)/Google/Chrome/Application/chrome.exe', '--kiosk', '--no-default-browser-check', 
-			client = subprocess.call(['C:/Program Files (x86)/Google/Chrome/Application/chrome.exe', '--no-default-browser-check', 
+			os.system('taskkill /f flask.exe')
+			client = subprocess.call(['C:/Program Files (x86)/Google/Chrome/Application/chrome.exe', '--kiosk', '--no-default-browser-check', 
 				'--disable-translate', '--disable-features=TranslateUI', url],
 				stdout=subprocess.PIPE,
 				stderr=subprocess.PIPE)
