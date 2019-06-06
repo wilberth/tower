@@ -78,8 +78,8 @@ if __name__ == "__main__":
 				stdout=subprocess.PIPE,
 				stderr=subprocess.PIPE)
 		except:
-			os.system('taskkill /f flask.exe')
-			client = subprocess.call(['C:/Program Files (x86)/Google/Chrome/Application/chrome.exe', '--kiosk', '--no-default-browser-check', 
+			os.system('taskkill /f /im flask.exe')
+			client = subprocess.call(['C:/Program Files (x86)/Google/Chrome/Application/chrome.exe', '--no-default-browser-check', 
 				'--disable-translate', '--disable-features=TranslateUI', url],
 				stdout=subprocess.PIPE,
 				stderr=subprocess.PIPE)
