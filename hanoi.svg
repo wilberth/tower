@@ -15,7 +15,7 @@
    viewBox="0 0 1088.2116 583.92368"
    id="svg2"
    version="1.1"
-   inkscape:version="0.91 r13725"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
    sodipodi:docname="hanoi.svg">
   <script
      xlink:href="tower.js"
@@ -338,14 +338,14 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.3012174"
-     inkscape:cx="247.84482"
-     inkscape:cy="291.96184"
+     inkscape:zoom="9.9589998"
+     inkscape:cx="1059.7014"
+     inkscape:cy="580.22212"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1920"
-     inkscape:window-height="1007"
+     inkscape:window-height="1015"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
@@ -474,16 +474,16 @@
        y="290.36343"
        inkscape:label="#rect4180-7-5-3-5-6-2" />
     <text
-       sodipodi:linespacing="125%"
        id="text4374"
        y="585.91766"
        x="292.95386"
-       style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:20px;line-height:125%;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu Light';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;line-height:0%;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu Light';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        xml:space="preserve"><tspan
          y="585.91766"
          x="292.95386"
          id="tspan4376"
-         sodipodi:role="line" /></text>
+         sodipodi:role="line"
+         style="font-size:20px;line-height:1.25"> </tspan></text>
     <g
        inkscape:label="#g4451"
        id="dialogWelcome"
@@ -497,39 +497,45 @@
          y="204.69583" />
       <text
          xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:12.49999809px;line-height:125%;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu Light';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;line-height:0%;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu Light';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
          x="214.6004"
          y="234.16069"
-         id="text4360"
-         sodipodi:linespacing="125%"><tspan
+         id="text4360"><tspan
            sodipodi:role="line"
            x="214.6004"
            y="234.16069"
-           id="tspan4372">Voor we beginnen, herhaal ik nog een keer de regels.</tspan><tspan
+           id="tspan4372"
+           style="font-size:12.49999809px;line-height:1.25">Voor we beginnen, herhaal ik nog een keer de regels.</tspan><tspan
            sodipodi:role="line"
            x="214.6004"
            y="249.78569"
-           id="tspan5248" /><tspan
+           id="tspan5248"
+           style="font-size:12.49999809px;line-height:1.25"> </tspan><tspan
            sodipodi:role="line"
            x="214.6004"
            y="265.41068"
-           id="tspan5250">- Alle schijven moeten naar het rechter paaltje</tspan><tspan
+           id="tspan5250"
+           style="font-size:12.49999809px;line-height:1.25">- Alle schijven moeten naar het rechter paaltje</tspan><tspan
            sodipodi:role="line"
            x="214.6004"
            y="281.03568"
-           id="tspan5252" /><tspan
+           id="tspan5252"
+           style="font-size:12.49999809px;line-height:1.25"> </tspan><tspan
            sodipodi:role="line"
            x="214.6004"
            y="296.66068"
-           id="tspan5254">- Een grote schijf mag nooit op een kleinere schijf staan</tspan><tspan
+           id="tspan5254"
+           style="font-size:12.49999809px;line-height:1.25">- Een grote schijf mag nooit op een kleinere schijf staan</tspan><tspan
            sodipodi:role="line"
            x="214.6004"
            y="312.28568"
-           id="tspan5256" /><tspan
+           id="tspan5256"
+           style="font-size:12.49999809px;line-height:1.25"> </tspan><tspan
            sodipodi:role="line"
            x="214.6004"
            y="327.91068"
-           id="tspan5258">- Je mag maar één schijf per keer verplaatsen</tspan></text>
+           id="tspan5258"
+           style="font-size:12.49999809px;line-height:1.25">- Je mag maar één schijf per keer verplaatsen</tspan></text>
       <g
          id="okWelcome">
         <rect
@@ -541,16 +547,16 @@
            style="fill:#00ffff;fill-opacity:1;stroke:#ff0000;stroke-width:2.79999995;stroke-miterlimit:3.5;stroke-dasharray:none;stroke-opacity:1"
            onclick="" />
         <text
-           sodipodi:linespacing="125%"
            id="text4391"
            y="383.46408"
            x="355.55008"
-           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:20px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';letter-spacing:0px;word-spacing:0px;display:block;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:0%;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';letter-spacing:0px;word-spacing:0px;display:block;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
            xml:space="preserve"><tspan
              y="383.46408"
              x="355.55008"
              id="tspan4393"
-             sodipodi:role="line">OK</tspan></text>
+             sodipodi:role="line"
+             style="font-size:20px;line-height:1.25">OK</tspan></text>
       </g>
     </g>
     <path
@@ -609,15 +615,15 @@
       </g>
       <text
          xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:20px;line-height:125%;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu Light';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;line-height:0%;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu Light';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
          x="299.96353"
          y="385.73309"
-         id="text4374-5"
-         sodipodi:linespacing="125%"><tspan
+         id="text4374-5"><tspan
            sodipodi:role="line"
            id="tspan4376-3"
            x="299.96353"
-           y="385.73309" /></text>
+           y="385.73309"
+           style="font-size:20px;line-height:1.25"> </tspan></text>
       <g
          id="dialogWelcome-5"
          inkscape:label="#g4451">
@@ -629,16 +635,16 @@
            id="rect4358-6"
            style="fill:#00ffff;fill-opacity:1;stroke:#ff0000;stroke-width:2.79999995;stroke-miterlimit:3.5;stroke-dasharray:none;stroke-opacity:1" />
         <text
-           sodipodi:linespacing="125%"
            id="text4360-2"
            y="280.27136"
            x="249.95192"
-           style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:12.49999809px;line-height:125%;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu Light';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;line-height:0%;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu Light';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
            xml:space="preserve"><tspan
              y="280.27136"
              x="249.95192"
              sodipodi:role="line"
-             id="tspan4375">Je hebt alle puzzels opgelost, goed gedaan!</tspan></text>
+             id="tspan4375"
+             style="font-size:12.49999809px;line-height:1.25">Je hebt alle puzzels opgelost, goed gedaan!</tspan></text>
         <g
            onclick="document.getElementById('dialogWelcome').style.display='none'; window.history.back()"
            id="g4446-3">
@@ -660,16 +666,16 @@
                    style="fill:#00ffff;fill-opacity:1;stroke:#ff0000;stroke-width:2.79999995;stroke-miterlimit:3.5;stroke-dasharray:none;stroke-opacity:1"
                    onclick="" />
                 <text
-                   sodipodi:linespacing="125%"
                    id="text4391-0"
                    y="383.46408"
                    x="355.55008"
-                   style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:20px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';letter-spacing:0px;word-spacing:0px;display:block;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+                   style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:0%;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';letter-spacing:0px;word-spacing:0px;display:block;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
                    xml:space="preserve"><tspan
                      y="383.46408"
                      x="355.55008"
                      id="tspan4393-6"
-                     sodipodi:role="line">OK</tspan></text>
+                     sodipodi:role="line"
+                     style="font-size:20px;line-height:1.25">OK</tspan></text>
               </g>
             </g>
           </g>
@@ -690,15 +696,15 @@
       </g>
       <text
          xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:20px;line-height:125%;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu Light';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;line-height:0%;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu Light';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
          x="299.96353"
          y="385.73309"
-         id="text4374-3"
-         sodipodi:linespacing="125%"><tspan
+         id="text4374-3"><tspan
            sodipodi:role="line"
            id="tspan4376-5"
            x="299.96353"
-           y="385.73309" /></text>
+           y="385.73309"
+           style="font-size:20px;line-height:1.25"> </tspan></text>
       <g
          id="dialogWelcome-6"
          inkscape:label="#g4451">
@@ -710,24 +716,26 @@
            id="rect4358-2"
            style="fill:#00ffff;fill-opacity:1;stroke:#ff0000;stroke-width:2.79999995;stroke-miterlimit:3.5;stroke-dasharray:none;stroke-opacity:1" />
         <text
-           sodipodi:linespacing="125%"
            id="text4360-9"
            y="267.97519"
            x="285.30344"
-           style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:12.49999809px;line-height:125%;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu Light';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;line-height:0%;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu Light';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
            xml:space="preserve"><tspan
              y="267.97519"
              x="285.30344"
              sodipodi:role="line"
-             id="tspan4399">Goed gedaan!</tspan><tspan
+             id="tspan4399"
+             style="font-size:12.49999809px;line-height:1.25">Goed gedaan!</tspan><tspan
              y="283.60019"
              x="285.30344"
              sodipodi:role="line"
-             id="tspan5333" /><tspan
+             id="tspan5333"
+             style="font-size:12.49999809px;line-height:1.25"> </tspan><tspan
              y="299.22519"
              x="285.30344"
              sodipodi:role="line"
-             id="tspan5335">Op naar de volgende puzzel!</tspan></text>
+             id="tspan5335"
+             style="font-size:12.49999809px;line-height:1.25">Op naar de volgende puzzel!</tspan></text>
         <g
            onclick="document.getElementById('dialogWelcome').style.display='none'"
            id="g4446-6">
@@ -746,15 +754,15 @@
                  y="354.4809" />
               <text
                  xml:space="preserve"
-                 style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:20px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';letter-spacing:0px;word-spacing:0px;display:block;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+                 style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:0%;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';letter-spacing:0px;word-spacing:0px;display:block;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
                  x="355.55008"
                  y="383.46408"
-                 id="text4391-6"
-                 sodipodi:linespacing="125%"><tspan
+                 id="text4391-6"><tspan
                    sodipodi:role="line"
                    id="tspan4393-2"
                    x="355.55008"
-                   y="383.46408">OK</tspan></text>
+                   y="383.46408"
+                   style="font-size:20px;line-height:1.25">OK</tspan></text>
             </g>
           </g>
         </g>
@@ -774,43 +782,50 @@
          y="204.69583" />
       <text
          xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:12.49999809px;line-height:125%;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu Light';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;line-height:0%;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu Light';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
          x="327.57153"
          y="234.16069"
-         id="text4360-5"
-         sodipodi:linespacing="125%"><tspan
+         id="text4360-5"><tspan
            sodipodi:role="line"
            id="tspan4362-3"
            x="327.57153"
-           y="234.16069" /><tspan
+           y="234.16069"
+           style="font-size:12.49999809px;line-height:1.25"> </tspan><tspan
            sodipodi:role="line"
            x="327.57153"
            y="249.78569"
-           id="tspan4364-5" /><tspan
+           id="tspan4364-5"
+           style="font-size:12.49999809px;line-height:1.25"> </tspan><tspan
            sodipodi:role="line"
            x="327.57153"
            y="265.41068"
-           id="tspan4366-6">De tijd is om.</tspan><tspan
+           id="tspan4366-6"
+           style="font-size:12.49999809px;line-height:1.25">De tijd is om.</tspan><tspan
            sodipodi:role="line"
            x="327.57153"
            y="281.03568"
-           id="tspan5337" /><tspan
+           id="tspan5337"
+           style="font-size:12.49999809px;line-height:1.25"> </tspan><tspan
            sodipodi:role="line"
            x="327.57153"
            y="296.66068"
-           id="tspan5339">Goed gedaan!</tspan><tspan
+           id="tspan5339"
+           style="font-size:12.49999809px;line-height:1.25">Goed gedaan!</tspan><tspan
            sodipodi:role="line"
            x="327.57153"
            y="312.28568"
-           id="tspan4368-2" /><tspan
+           id="tspan4368-2"
+           style="font-size:12.49999809px;line-height:1.25"> </tspan><tspan
            sodipodi:role="line"
            x="327.57153"
            y="327.91068"
-           id="tspan4370-9" /><tspan
+           id="tspan4370-9"
+           style="font-size:12.49999809px;line-height:1.25"> </tspan><tspan
            sodipodi:role="line"
            x="327.57153"
            y="343.53568"
-           id="tspan4372-1" /></text>
+           id="tspan4372-1"
+           style="font-size:12.49999809px;line-height:1.25"> </tspan></text>
       <g
          id="g4446-2"
          onclick="document.getElementById('dialogTime').style.display='none'">
@@ -823,16 +838,16 @@
            style="fill:#00ffff;fill-opacity:1;stroke:#ff0000;stroke-width:2.79999995;stroke-miterlimit:3.5;stroke-dasharray:none;stroke-opacity:1"
            onclick="" />
         <text
-           sodipodi:linespacing="125%"
            id="text4391-09"
            y="383.46408"
            x="355.55008"
-           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:20px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';letter-spacing:0px;word-spacing:0px;display:block;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:0%;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';letter-spacing:0px;word-spacing:0px;display:block;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
            xml:space="preserve"><tspan
              y="383.46408"
              x="355.55008"
              id="tspan4393-3"
-             sodipodi:role="line">OK</tspan></text>
+             sodipodi:role="line"
+             style="font-size:20px;line-height:1.25">OK</tspan></text>
       </g>
     </g>
     <g
@@ -849,27 +864,30 @@
          y="204.69583" />
       <text
          xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:12.49999809px;line-height:125%;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu Light';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;line-height:0%;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu Light';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
          x="237.65575"
          y="255.679"
-         id="text4360-3"
-         sodipodi:linespacing="125%"><tspan
+         id="text4360-3"><tspan
            sodipodi:role="line"
            x="237.65575"
            y="255.679"
-           id="tspan4404">Jammer, je hebt teveel schijven verplaatst.</tspan><tspan
+           id="tspan4404"
+           style="font-size:12.49999809px;line-height:1.25">Jammer, je hebt teveel schijven verplaatst.</tspan><tspan
            sodipodi:role="line"
            x="237.65575"
            y="271.30399"
-           id="tspan5346" /><tspan
+           id="tspan5346"
+           style="font-size:12.49999809px;line-height:1.25"> </tspan><tspan
            sodipodi:role="line"
            x="237.65575"
            y="286.92899"
-           id="tspan5348">De puzzel begint opnieuw, zodat je het nog een </tspan><tspan
+           id="tspan5348"
+           style="font-size:12.49999809px;line-height:1.25">De puzzel begint opnieuw, zodat je het nog een </tspan><tspan
            sodipodi:role="line"
            x="237.65575"
            y="302.55399"
-           id="tspan5350">keer kan proberen.</tspan></text>
+           id="tspan5350"
+           style="font-size:12.49999809px;line-height:1.25">keer kan proberen.</tspan></text>
       <g
          id="g4446-7"
          onclick="document.getElementById('dialogMoves').style.display='none'">
@@ -882,52 +900,139 @@
            style="fill:#00ffff;fill-opacity:1;stroke:#ff0000;stroke-width:2.79999995;stroke-miterlimit:3.5;stroke-dasharray:none;stroke-opacity:1"
            onclick="" />
         <text
-           sodipodi:linespacing="125%"
            id="text4391-3"
            y="383.46408"
            x="355.55008"
-           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:20px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';letter-spacing:0px;word-spacing:0px;display:block;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:0%;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';letter-spacing:0px;word-spacing:0px;display:block;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
            xml:space="preserve"><tspan
              y="383.46408"
              x="355.55008"
              id="tspan4393-60"
-             sodipodi:role="line">OK</tspan></text>
+             sodipodi:role="line"
+             style="font-size:20px;line-height:1.25">OK</tspan></text>
       </g>
     </g>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="-116.70534"
        y="283.54642"
        id="iGame"
-       sodipodi:linespacing="125%"
        inkscape:label="#text4389"><tspan
          sodipodi:role="line"
          id="tspan4391"
          x="-116.70534"
-         y="283.54642">0</tspan></text>
+         y="283.54642"
+         style="font-size:40px;line-height:1.25">0</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="-115.72232"
        y="283.54642"
-       id="nGameSlash"
-       sodipodi:linespacing="125%"><tspan
+       id="nGameSlash"><tspan
          sodipodi:role="line"
          id="tspan4396"
          x="-115.72232"
-         y="283.54642">/</tspan></text>
+         y="283.54642"
+         style="font-size:40px;line-height:1.25">/</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="-101.22368"
        y="283.54642"
        id="nGame"
-       sodipodi:linespacing="125%"
        inkscape:label="#text4398"><tspan
          sodipodi:role="line"
          id="tspan4400"
          x="-101.22368"
-         y="283.54642">0</tspan></text>
+         y="283.54642"
+         style="font-size:40px;line-height:1.25">0</tspan></text>
+    <rect
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#a05a2c;fill-opacity:1;fill-rule:evenodd;stroke:#784421;stroke-width:0.17511028px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       id="rect3355-3"
+       width="156.09496"
+       height="17.177261"
+       x="743.38696"
+       y="311.75485" />
+    <rect
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#deaa87;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.15364651px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       id="ghost_peg0"
+       width="3.0729296"
+       height="61.458595"
+       x="769.12018"
+       y="250.21095"
+       inkscape:label="#rect3357" />
+    <rect
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#deaa87;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.15364651px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       id="ghost_peg1"
+       width="3.0729296"
+       height="61.458595"
+       x="819.89795"
+       y="250.21095"
+       inkscape:label="#rect3357-3" />
+    <rect
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#deaa87;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.15364651px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       id="ghost_peg2"
+       width="3.0729296"
+       height="61.458595"
+       x="870.67578"
+       y="250.21095"
+       inkscape:label="#rect3357-6" />
+    <rect
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#d40000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.28582779;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       id="ghost_disk0"
+       width="51.85569"
+       height="7.221385"
+       x="744.72876"
+       y="302.64185"
+       inkscape:label="#rect4180" />
+    <rect
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#ff6600;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.26948103;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       id="ghost_disk1"
+       width="41.48455"
+       height="7.221385"
+       x="749.91431"
+       y="294.22952"
+       inkscape:label="#rect4180-7" />
+    <rect
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#ffd42a;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.25565213;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       id="ghost_disk2"
+       width="33.187645"
+       height="7.221385"
+       x="754.06281"
+       y="285.81717"
+       inkscape:label="#rect4180-7-5" />
+    <rect
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#71c837;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.24443695;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       id="ghost_disk3"
+       width="26.606436"
+       height="7.221385"
+       x="757.35339"
+       y="277.40485"
+       inkscape:label="#rect4180-7-5-3" />
+    <rect
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#2ad4ff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.23011324;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       id="ghost_disk4"
+       width="20.166101"
+       height="7.221385"
+       x="760.57355"
+       y="268.99252"
+       inkscape:label="#rect4180-7-5-3-5" />
+    <rect
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#9955ff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.21830459;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       id="ghost_disk5"
+       width="15.118814"
+       height="7.221385"
+       x="763.09723"
+       y="260.5802"
+       inkscape:label="#rect4180-7-5-3-5-6" />
+    <rect
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#ff80b2;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.21304344;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       id="ghost_disk6"
+       width="11.523486"
+       height="7.221385"
+       x="764.8949"
+       y="252.16789"
+       inkscape:label="#rect4180-7-5-3-5-6-2" />
   </g>
 </svg>

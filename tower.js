@@ -9,7 +9,8 @@ var nDisk = 7
 var nPeg = 3
 // globals
 var pegDisk = [[],[],[]] // list of stacks 
-var xPos = [], disk = [], yPos = [], dx
+var disk = [], yPos = [], dx
+var diskGhost = [], yPosGhost = [], dxGhost
 var iGame = 0 // counter in startPositions, goalPositions and maxMoves
 var iAttempt = 0 // attempt at the game, increments on reaching maxMoves
 var iMove = 0 // move number within attempt
@@ -113,6 +114,13 @@ function setPos(iDisk, iPeg, iPos){
 	disk[iDisk].setAttribute('transform', "translate("+iPeg*dx+",0)")
 	disk[iDisk].setAttribute('y', yPos[iPos])
 	disk[iDisk].setAttribute('cy', yPos[iPos])
+}
+
+function setPosGhost(iDisk, iPeg, iPos){
+	console.log("setPosGhost: "+iDisk+", "+iPeg+", "+iPos+", "+yPosGhost[iPos])
+	diskGhost[iDisk].setAttribute('transform', "translate("+iPeg*dxGhost+",0)")
+	diskGhost[iDisk].setAttribute('y', yPosGhost[iPos])
+	diskGhost[iDisk].setAttribute('cy', yPosGhost[iPos])
 }
 
 function unloggedMove(a, b){
@@ -286,11 +294,13 @@ function initGame(){
 		disk[i].style.display = "none" 
 	// enable disks that are present in this game and do not exceed the tower height
 	for(var iPeg=0; iPeg<nPeg; iPeg++){
-		if(pegDisk[iPeg].length > maxHeight[iPeg])
+		while(pegDisk[iPeg].length > maxHeight[iPeg])
+			// task is invalid, make the best of it
 			pegDisk[iPeg].pop()
 		for(var iPos=0; iPos<pegDisk[iPeg].length && iPos<maxHeight[iPeg]; iPos++){
 			var iDisk = pegDisk[iPeg][iPos]
 			if(iDisk>=nDisk){
+				// task is invalid, make the best of it
 				console.error("disk " + iDisk + "not present in template")
 				pegDisk[iPeg].pop()
 				continue
@@ -299,6 +309,31 @@ function initGame(){
 			setPos(iDisk, iPeg, iPos)
 		}
 	}
+	// now the same for the ghost image
+	try {
+		// disable all disks
+		for(var i=0; i<nDisk; i++)
+			diskGhost[i].style.display = "none" 
+		pegDiskGhost = JSON.parse(JSON.stringify(goalPositions[iGame]))
+		for(var iPeg=0; iPeg<nPeg; iPeg++){
+			while(pegDiskGhost[iPeg].length > maxHeight[iPeg])
+				pegDiskGhost[iPeg].pop()
+			for(var iPos=0; iPos<pegDiskGhost[iPeg].length && iPos<maxHeight[iPeg]; iPos++){
+				var iDisk = pegDiskGhost[iPeg][iPos]
+				// 
+				if(iDisk>=nDisk){
+					console.error("disk " + iDisk + "not present in template")
+					pegDiskGhost[iPeg].pop()
+					continue
+				}
+				diskGhost[iDisk].style.display = "block"
+				setPosGhost(iDisk, iPeg, iPos)
+			}
+		}
+	} catch (error) { 
+		console.error("no ghost found: "+ error)
+	}
+
 	initDiskInteractivity()
 }
 
@@ -320,6 +355,7 @@ function init(){
 
 	// get distance between pegs (dx) and vertical position of disks (yPos)
 	var peg = []
+	var xPos = []
 	for(var i=0; i<nPeg; i++){ 
 		peg.push(document.getElementById("peg"+i))
 		xPos[i] = peg[i].x.baseVal.value
@@ -353,6 +389,35 @@ function init(){
 		console.log("new pegHeight:" + newHeight)
 	}
 	
+	try{
+		// get distance between pegs (dx) and vertical position of disks (yPos)
+		var pegGhost = []
+		var xPosGhost = []
+		for(var i=0; i<nPeg; i++){ 
+			pegGhost.push(document.getElementById("ghost_peg"+i))
+			xPosGhost[i] = pegGhost[i].x.baseVal.value
+		}
+		dxGhost = xPosGhost[1] - xPosGhost[0]
+		
+		// get y-position of ghost disks
+		for(var i=0; i<nDisk; i++){
+			try {
+				var d = document.getElementById("ghost_disk"+i)
+				diskGhost.push(d)
+				try{
+					yPosGhost[i] = diskGhost[i].y.baseVal.value // rectangle
+				} catch(error) {
+					yPosGhost[i] = diskGhost[i].cy.baseVal.value // circle or ellipse
+				}
+			} catch(error) {
+				console.log("number of disks in template: "+i)
+				nDisk = i
+				break
+			}
+		}
+	} catch (error) { 
+		console.error("no ghost found")
+	}
 	
 
 	if(!("arrows" in qsParm) || qsParm['arrows']==0){
