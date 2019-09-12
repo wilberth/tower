@@ -58,6 +58,7 @@ if __name__ == "__main__":
 	import os
 	import urllib
 	print("Starting Tower server")
+	"""
 	myEnv = os.environ.copy()
 	myEnv["FLASK_APP"] = "tower.py"
 	
@@ -67,6 +68,7 @@ if __name__ == "__main__":
 		#stdout=open("info.log", "a"),
 		stderr=open("error.log", "a")
 		)
+	"""
 
 	if(len(sys.argv)<2 or sys.argv[1]!="--server"):
 		print("Starting Tower client")
@@ -78,8 +80,8 @@ if __name__ == "__main__":
 				stdout=subprocess.PIPE,
 				stderr=subprocess.PIPE)
 		except:
-			os.system('taskkill /f /im flask.exe')
 			client = subprocess.call(['C:/Program Files (x86)/Google/Chrome/Application/chrome.exe', '--no-default-browser-check', 
 				'--disable-translate', '--disable-features=TranslateUI', url],
 				stdout=subprocess.PIPE,
 				stderr=subprocess.PIPE)
+	app.run(debug=True)
