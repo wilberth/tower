@@ -17,9 +17,8 @@
    version="1.1"
    inkscape:version="0.92.3 (2405546, 2018-03-11)"
    sodipodi:docname="hanoi.svg">
-  <script
-     xlink:href="tower.js"
-     id="script4301" />
+  <script xlink:href="tower.js" id="script4301" />
+  <script xlink:href="datahandler.js" id="script44301" />
   <title
      id="title4280">Hanoi</title>
   <defs

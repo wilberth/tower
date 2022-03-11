@@ -20,6 +20,8 @@
   <script
      xlink:href="tower.js"
      id="script4301" />
+  <script xlink:href="datahandler.js" id="script44301" />
+
   <title
      id="title4280">London</title>
   <defs

@@ -86,23 +86,28 @@ function padNumber(n, width, z) {
 
 function saveMove(ppn, t, data, verbose=true){
 	// save move to localstorage
-	var key = "tower&" + padNumber(ppn, 4) + "&" + t
-	var value = JSON.stringify(data)
-	localStorage.setItem(key, value)
+	//var key = "tower&" + padNumber(ppn, 4) + "&" + t
+	//var value = JSON.stringify(data)
+	//localStorage.setItem(key, value)
 	
 	// show
-	if(verbose)
-		console.log(key +": "+value)
+	//if(verbose)
+		//console.log(key +": "+value)
 		
 	// send ajax
-	var xhttp = new XMLHttpRequest()
+	//var xhttp = new XMLHttpRequest()
 	/*xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200)
 			console.log("success: " + xhttp.responseText)
 	}*/
-	xhttp.open("POST", "/data", true)
-	xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-	xhttp.send("data="+encodeURIComponent(JSON.stringify(data)))
+	//xhttp.open("POST", "/data", true)
+	//xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	//xhttp.send("data="+encodeURIComponent(JSON.stringify(data)))
+	if(debug)
+		console.log(data)
+	else
+		saveData("9B41D449", ppn, data)
+
 }
 		
 		
@@ -282,7 +287,15 @@ function initDiskInteractivity(){
 	}
 }
 
+async function sendMarker(i){
+	data = await fetch(`http://localhost:5000?marker=${i}`)
+		.then(response => response.json())
+		.catch(error => console.error("no marker server"))
+	if(data) console.log(data)
+}
+
 function initGame(){
+	sendMarker(iGame)
 	// initAttempt would be a better name for this function
 	iMove = 0
 	document.getElementById("iGame").textContent = iGame + 1
