@@ -170,10 +170,23 @@ function unloggedMove(a, b){
 	}
 	
 	if(iMove == maxMoves[iGame]){
-		iAttempt++
-		initGame()
-		document.getElementById('dialogMoves').style.display = "block"
-		return "INFO: valid, reached maxMoves"
+		if("noErrorRepeat" in qsParm){ // go to next game if maximum moves has been reached
+			iGame++ 
+			if(iGame==startPositions.length){
+				document.getElementById('dialogCongratulate').style.display = "block"
+				return "INFO: valid, last of experiment"
+			} else {
+				iAttempt = 0 
+				initGame()
+				document.getElementById('dialogContinue').style.display = "block"
+				return "INFO: valid, last of game"
+			}
+		} else {
+			iAttempt++
+			initGame()
+			document.getElementById('dialogMoves').style.display = "block"
+			return "INFO: valid, reached maxMoves"
+		}
 	}
 	
 	return "INFO: valid"
@@ -355,6 +368,11 @@ function init(){
 	window.addEventListener("resize", resize)
 	document.getElementById("nGame").textContent = startPositions.length
 	
+	if("noErrorRepeat" in qsParm){
+		document.getElementById("tspan4399").innerHTML="" // remove "goed gedaan" making next puzzel dialog neutral
+	}
+		
+
 	// welcome dialog
 	document.getElementById('okWelcome').addEventListener("click", start)
 	if(debug) 
@@ -451,3 +469,4 @@ function init(){
 	initGame()
 }
 window.onload = init
+
