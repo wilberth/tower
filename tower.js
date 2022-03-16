@@ -420,6 +420,7 @@ function init(){
 		console.log("new pegHeight:" + newHeight)
 	}
 	
+	// same for the ghost image
 	try{
 		// get distance between pegs (dx) and vertical position of disks (yPos)
 		var pegGhost = []
@@ -427,6 +428,7 @@ function init(){
 		for(var i=0; i<nPeg; i++){ 
 			pegGhost.push(document.getElementById("ghost_peg"+i))
 			xPosGhost[i] = pegGhost[i].x.baseVal.value
+			console.log("ghost x: "+xPosGhost[i])
 		}
 		dxGhost = xPosGhost[1] - xPosGhost[0]
 		
@@ -445,6 +447,15 @@ function init(){
 				nDisk = i
 				break
 			}
+		}
+		// alter peg height
+		for(var i=0; i<nPeg; i++){
+			let y = pegGhost[i].y.baseVal.value
+			let height = pegGhost[i].height.baseVal.value
+			let newHeight = 5 + (height-5) / nDisk * maxHeight[i]
+			pegGhost[i].y.baseVal.newValueSpecifiedUnits(SVGLength.SVG_LENGTHTYPE_PX, y+height-newHeight)
+			pegGhost[i].height.baseVal.newValueSpecifiedUnits(SVGLength.SVG_LENGTHTYPE_PX, newHeight)
+			console.log("new pegHeight ghost:" + newHeight)
 		}
 	} catch (error) { 
 		console.error("no ghost found")
