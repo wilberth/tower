@@ -84,6 +84,35 @@ function padNumber(n, width, z) {
 	return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n
 }
 
+// override of datahandler version with check on timely response
+function saveRemoteData2(api_key, ppn, data, timestamp){
+	// not using fetch yet for mobile compatibility
+	data["timestamp"] = timestamp
+	var xhr = new XMLHttpRequest()
+	xhr.open("POST", save_data_url, true)
+
+	// json style:
+	//xhr.setRequestHeader("Content-type","application/json")
+	//var encodedData = JSON.stringify(data)
+	// url (post) style:
+	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+	var encodedData = "api_key=" + api_key + 
+		"&ppn=" + ppn + 
+		"&data=" + encodeURIComponent(JSON.stringify(data))
+
+	var myTimeout = setTimeout( () => alert("Warning: data not saved"), 3000)
+	xhr.onreadystatechange = function(){
+		if (xhr.readyState==4 && xhr.status==200){
+			clearTimeout(myTimeout)
+			console.log("Server answer 2: " + xhr.responseText);
+			if (xhr.responseText.startsWith("ERROR"))
+				alert(xhr.responseText)
+		}
+	}
+	xhr.send(encodedData)
+}
+
+
 function saveMove(ppn, t, data, verbose=true){
 	// save move to localstorage
 	//var key = "tower&" + padNumber(ppn, 4) + "&" + t
@@ -106,7 +135,7 @@ function saveMove(ppn, t, data, verbose=true){
 	if(debug)
 		console.log(data)
 	else
-		saveData("9B41D449", ppn, data)
+		saveRemoteData2("9B41D449", ppn, data, new Date().valueOf())
 
 }
 		
