@@ -207,7 +207,7 @@ function unloggedMove(a, b){
 			} else {
 				iAttempt = 0 
 				initGame()
-				//document.getElementById('dialogContinue').style.display = "block"
+				document.getElementById('dialogContinue').style.display = "block"
 				return "INFO: valid, too many moves, no repeat"
 			}
 		} else {
